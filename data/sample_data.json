@@ -1,0 +1,26 @@
+{
+  "subjects": [
+    "Physics",
+    "Chemistry",
+    "Mathematics",
+    "English",
+    "Computer Science",
+    "Physical Education"
+  ],
+
+  "Teachers": {
+    "Physics": "Shidhar Sir",
+    "Chemistry": "Seema Ma'am",
+    "Mathematics": "Narayan Sir",
+    "English": "Shailiy Ma'am",
+    "Computer Science": "Deepak Sir",
+    "Physical Education": "Georg Sir"
+  },
+
+  "Sections": [
+    "12A",
+    "12B",
+    "12C"
+  ]
+
+}
