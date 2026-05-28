@@ -9,17 +9,25 @@ subjects = sample_data['subjects']
 
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 periods = ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"]
+sections = ["11A", "11B", "11C"]
 
-timetable = {}
 
-for i in days:
-    timetable[i] = {}
-    for j in periods:
-        while True:
-            r1 = random.choice(subjects)
-            if constrains.subject_limit(timetable[i],r1, 2):
-                timetable[i][j] = r1
-                break
+timetable_per_section = {}
+for i in sections:
+    timetable = {}
+    timetable_per_section[i] = {}
+    for j in days:
+        timetable[j] = {}
+        for k in periods:
+            while True:
+                r1 = random.choice(subjects)
+                if constrains.subject_limit(timetable[j],r1, 2):
+                    timetable[j][k] = r1
+                    break
+        timetable_per_section[i][j] = timetable[j]
 
-for i in timetable.items():
-    print(i)
+
+for section, schedule in timetable_per_section.items():
+    print(section)
+    for day, period in schedule.items():
+        print(day, period)
