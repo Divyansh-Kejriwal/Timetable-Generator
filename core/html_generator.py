@@ -1,3 +1,5 @@
+import os
+
 def export_html(timetable):
     html = """
     <!DOCTYPE html>
@@ -6,6 +8,28 @@ def export_html(timetable):
     <meta charset="utf-8">
     <title>Timetable</title>
     </head>
+    <style>
+    table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+        vertical-align: middle;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f0f0f0;
+    }
+    
+    h1{
+        margin-top: 30px;
+        font-size: 24px;
+    </style>
     <body>
     
     """
@@ -44,3 +68,24 @@ def export_html(timetable):
 
     with open("timetable.html" , "w") as file:
         file.write(html)
+
+
+def send_file(file, destination):
+    source_file = file
+    destination_dir = destination
+    file_name = os.path.basename(source_file)
+
+    destination_file = os.path.join(destination_dir, file_name)
+
+    try:
+        if not os.path.exists(destination_dir):
+            os.makedirs(destination_dir)
+
+        os.replace(source_file, destination_file)
+        print(f"Successfully moved to {destination_file}")
+
+    except FileNotFoundError:
+        print("The source file does not exist.")
+    except PermissionError:
+        print("Permission denied.")
+

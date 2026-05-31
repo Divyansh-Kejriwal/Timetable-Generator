@@ -1,7 +1,7 @@
 import random
 import json
 import constrains
-from output import html_generator
+from core import html_generator
 
 
 def subject_generator(subject_list):
@@ -127,5 +127,6 @@ timetable_per_section = generate_timetable()
 resolve_teacher_conflicts(timetable_per_section)
 
 html_generator.export_html(timetable_per_section)
+html_generator.send_file("timetable.html", "../output/")
 
 print_timetable(timetable_per_section)
